@@ -1,9 +1,19 @@
 import art
+import os
 
-print(art.logo)
+
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
             'v', 'w', 'x', 'y', 'z']
+
+
+def clear_screen():
+    """Clear the terminal for another around"""
+    try:
+          os.system("cls" if os.name == "nt" else "clear")
+    except:
+         print("\n" * 20)
+
 
 
 def caesar(original_text, shift_amount, encode_or_decode):
@@ -25,12 +35,15 @@ def caesar(original_text, shift_amount, encode_or_decode):
             #upper() converts lowercase to uppercase letters
             #isupper() checks if the letter is uppercase only so it's like true or false(boolean)
 
+
+
 def main():
     """holds the main logic"""
+    print(art.logo)
     should_continue = True
     while should_continue:
         while True:
-            direction = input("Type 'encode' to encrypt, type 'decode' to decrypt, or 'Q' to exit!\n").lower()
+            direction = input("Type 'encode' to encrypt, type 'decode' to decrypt!\n").lower()
             if direction in ["encode", "decode"]:
                 break
             print("Invalid choice. Please enter 'encode' or 'decode'.")
@@ -60,7 +73,8 @@ def main():
             should_continue = False
             print("Goodbye")
         elif restart == "yes":
-            print("\n" * 20)
+            clear_screen()
+
 
 
 
